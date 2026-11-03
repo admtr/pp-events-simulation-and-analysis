@@ -107,20 +107,22 @@ make clean-data   # usuwa data/events.root
 cern_00/
 ├── Makefile                  
 ├── config/
-│   └── minbias_13600.cmnd    # ustawienia Pythii: wiązki, energia, procesy, seed, liczba zdarzeń
+│   └── minbias_13600.cmnd              # konfiguracja generatora
 ├── include/
-│   └── Categories.h          # kategorie cząstek i binowanie 
+│   └── Categories.h                    # kategorie cząstek i binowanie 
 ├── src/
-│   ├── generate.cc           # [1] generator Pythia 8
-│   └── analysis.cc           # [2] analiza i histogramy
+│   ├── generate.cc                     # [1] generator Pythia 8
+│   └── analysis.cc                     # [2] analiza i histogramy
 ├── macros/
-│   └── draw_plots.C          # [3] makro rysujące
+│   └── draw_plots.C                    # [3] makro rysujące
 ├── data/                     
 ├── results/
-│   ├── analysis.root         # histogramy hN_*, hPt_*, hEta_*, hPhi_*
-│   └── plots/                # wykresy PNG/PDF
-├── build/                    # skompilowane programy (poza repozytorium)
-└── test/                     # wyniki "make test" (poza repozytorium)
+│   ├── analysis.root                   # histogramy hN_*, hPt_*, hEta_*, hPhi_*
+│   └── plots/                          # wykresy PNG/PDF
+├── build/                              # skompilowane programy (poza repozytorium)
+├── pp_events_simulation_analysis.pdf   #prezentacja z histogramami                 
+└── test/                               # wyniki "make test" (poza repozytorium)
+
 ```
 
 ## Decyzje implementacyjne

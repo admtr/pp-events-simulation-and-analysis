@@ -38,12 +38,12 @@ struct LineStyle { int color; int style; };
 const std::map<std::string, LineStyle> kStyles = {
   {"all",  {kGray + 2,  1}},
   {"ch",   {kBlack,     1}},
-  {"pip",  {kBlue + 1,  1}},
-  {"pim",  {kBlue + 1,  2}},
-  {"Kp",   {kRed + 1,   1}},
-  {"Km",   {kRed + 1,   2}},
-  {"p",    {kGreen + 2, 1}},
-  {"pbar", {kGreen + 2, 2}},
+  {"pip",  {kBlue + 2,  1}},
+  {"pim",  {kAzure + 7, 1}},
+  {"Kp",   {kRed + 2,   1}},
+  {"Km",   {kRed - 7,   1}},
+  {"p",    {kGreen + 3, 1}},
+  {"pbar", {kGreen - 3, 1}},
 };
 
 struct Group { const char* tag; const char* title; std::vector<std::string> cats; };
@@ -152,6 +152,7 @@ void DrawGroup(TFile* f, const ana::Variable& v, const Group& g, const TString& 
 
   const TString base = TString("cmp_") + v.name + "_" + g.tag;
   auto* c = new TCanvas("c_" + base, base, 800, 600);
+  c->SetBottomMargin(0.12);
   if (v.logY) c->SetLogy();
 
   TH1D* first = hs.front().first;
@@ -181,8 +182,12 @@ void draw_plots(const char* fileName = "results/analysis.root", const char* outD
   gErrorIgnoreLevel = kWarning;
 
   gStyle->SetOptStat(1110);
+  gStyle->SetStatX(0.40);
+  gStyle->SetStatY(0.155);
+  gStyle->SetStatW(0.27);
+  gStyle->SetStatH(0.14);
   gStyle->SetPadLeftMargin(0.13);
-  gStyle->SetPadBottomMargin(0.12);
+  gStyle->SetPadBottomMargin(0.27);
   gStyle->SetTitleOffset(1.3, "Y");
 
   TFile* f = TFile::Open(fileName, "READ");

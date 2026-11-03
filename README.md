@@ -1,19 +1,19 @@
-# Symulacja i analiza rozkładów cząstek dla pp @ √s = 13.6 TeV (Pythia 8 + ROOT)
+# Symulacja i analiza rozkładów cząstek dla pp @ √s = 13.6 TeV
 
 Celem zadania było przygotowanie kompletnego pipeline od generacji zderzeń proton–proton przy energii √s = 13.6 TeV w Pythii 8, przez analizę cząstek końcowych w C++/ROOT, do wykresów w ROOT. Analiza tworzy histogramy krotności na zdarzenie (N), pędu poprzecznego (pT), pseudorapidity (η) i kąta azymutalnego (φ) dla wszystkich cząstek naładowanych oraz pionów π±, kaonów K± i protonów p/p̄.
 
 
 ## Wymagania
 
-- **C++17** (g++ lub clang) i **GNU Make**
-- **ROOT 6** (https://root.cern/install/)
-- **Pythia 8** (https://pythia.org/)
+- **C++17**  i **GNU Make**
+- **ROOT 6** 
+- **Pythia 8** 
 
 **Wersja systemu, na której projekt był uruchamiany:**
 - Windows + WSL2, Ubuntu 22.04
 - g++ 11.4, GNU Make
-- ROOT 6.36.12 (oficjalna paczka binarna dla Ubuntu 22.04)
-- Pythia 8.318 (kompilacja ze źródeł)
+- ROOT 6.36.12 
+- Pythia 8.318 
 
 
 ## Kompilacja
@@ -104,24 +104,23 @@ make clean-data   # usuwa data/events.root
 ## Struktura projektu
 
 ```
-cern_00/
+pp-events-simulation-and-analysis/
 ├── Makefile                  
 ├── config/
-│   └── minbias_13600.cmnd              # konfiguracja generatora
+│   └── minbias_13600.cmnd                  # konfiguracja generatora
 ├── include/
-│   └── Categories.h                    # kategorie cząstek i binowanie 
+│   └── Categories.h                        # kategorie cząstek i binowanie 
 ├── src/
-│   ├── generate.cc                     # [1] generator Pythia 8
-│   └── analysis.cc                     # [2] analiza i histogramy
+│   ├── generate.cc                         # [1] generator Pythia 8
+│   └── analysis.cc                         # [2] analiza i histogramy
 ├── macros/
-│   └── draw_plots.C                    # [3] makro rysujące
-├── data/                     
+│   └── draw_plots.C                        # [3] makro rysujące
+├── data/                                   # katalog na generowane zdarzenia
 ├── results/
-│   ├── analysis.root                   # histogramy hN_*, hPt_*, hEta_*, hPhi_*
-│   └── plots/                          # wykresy PNG/PDF
-├── build/                              # skompilowane programy (poza repozytorium)
-├── pp_events_simulation_analysis.pdf   #prezentacja z histogramami                 
-└── test/                               # wyniki "make test" (poza repozytorium)
+│   └── analysis.root                       # histogramy hN_*, hPt_*, hEta_*, hPhi_*
+├── build/                                  # skompilowane programy (poza repo)
+├── pp_events_simulation_analysis_pres.pdf   
+└── test/                                   # wyniki "make test" (poza repo)
 
 ```
 
@@ -155,3 +154,7 @@ Obserwacje:
 - Cząstek dodatnich jest więcej niż ujemnych, najwyraźniej dla p wobec p̄. Wynika to z zachowania ładunku i liczby barionowej (stan początkowy pp ma ładunek +2 i liczbę barionową +2).
 - Krotność cząstek naładowanych jest zawsze parzysta (też z zachowania ładunku), dlatego co drugi bin `hN_ch` jest pusty.
 - Rozkłady φ są płaskie, a rozkłady η symetryczne względem zera, zgodnie z symetrią zderzenia.
+
+## Autor
+
+Aleksandra Dmitruk

@@ -1,0 +1,27 @@
+! minbias_13600.cmnd
+! Ustawienia Pythii 8 dla generacji: pp @ sqrt(s) = 13.6 TeV, minimum bias.
+
+! Kazde ustawienie mozna nadpisac z linii polecen, np.:
+!   ./build/generate config/minbias_13600.cmnd out.root "Main:numberOfEvents = 1000" "Random:seed = 42"
+
+! --- Liczba zdarzen ---
+Main:numberOfEvents   = 100000
+Main:timesAllowErrors = 1000
+
+! --- Wiazki ---
+Beams:idA = 2212
+Beams:idB = 2212
+Beams:eCM = 13600.
+
+! --- Procesy fizyczne ---
+SoftQCD:nonDiffractive = on       ! minimum bias oznacza zdarzenia nieelastyczne niedyfrakcyjne (wg dokumentacji Pythii)
+
+! --- Reprodukowalnosc ---
+Random:setSeed = on
+Random:seed    = 14032026
+
+! --- Wydruk na ekran ---
+Next:numberCount       = 10000
+Next:numberShowInfo    = 0
+Next:numberShowProcess = 0
+Next:numberShowEvent   = 0

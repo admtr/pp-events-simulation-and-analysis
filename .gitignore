@@ -1,0 +1,18 @@
+# Skompilowane programy
+build/
+
+# Surowe zdarzenia (ok. 300 MB), odtwarzane przez "make generate"
+data/*
+!data/.gitkeep
+
+# Wyniki szybkiego testu ("make test")
+test/
+plots/
+
+# Pliki tymczasowe ROOT / edytora
+*.d
+*.so
+*.pcm
+*_ACLiC_dict*
+*~
+.vscode/
